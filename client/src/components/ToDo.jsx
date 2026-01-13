@@ -7,7 +7,8 @@ const ToDo = ({id, taskName }) => {
     const handleDlt = async (id)=>{
         await fetch(`http://localhost:3000/api/delete/${id}`,{
             method : "DELETE"
-        }) 
+        })
+        window.location.reload()
     }
     return (
         <>
