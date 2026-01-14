@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Container from './components/Container'
 import ToDo from './components/ToDo'
+import PopUp from './components/PopUp'
 
 function App() {
   const [todo, setTodo] = useState("")
   const [datas, setDatas] = useState([])
-  const [updateUI , setUpdateUI] = useState(false)
+  const [updateUI, setUpdateUI] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
+  const [editContent , setEditContent] = useState({})
 
 
 
@@ -27,8 +30,8 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ toDo: todo })
       })
-      .then(()=> setTodo(""))
-      .then(()=> setUpdateUI((prevState)=> !prevState))
+        .then(() => setTodo(""))
+        .then(() => setUpdateUI((prevState) => !prevState))
     }
 
   }
@@ -44,8 +47,11 @@ function App() {
           </form>
         </div>
         {datas.map((item) => (
-          <ToDo key={item._id} id={item._id} taskName={item.toDo} />
+          <>
+            <ToDo key={item._id} id={item._id} taskName={item.toDo} setUpdateUI={setUpdateUI} setShowEdit={setShowEdit} setEditContent={setEditContent} />
+          </>
         ))}
+        { showEdit && <PopUp setShowEdit={setShowEdit} editContent={editContent} />}
       </Container>
     </>
   )

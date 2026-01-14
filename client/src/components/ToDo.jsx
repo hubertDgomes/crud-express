@@ -1,24 +1,36 @@
 import React from 'react'
+import { useState } from 'react';
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
+import PopUp from './PopUp';
 
 
-const ToDo = ({id, taskName }) => {
+const ToDo = ({id, taskName , setUpdateUI , setShowEdit , setEditContent}) => {
+    
+
     const handleDlt = async (id)=>{
         await fetch(`http://localhost:3000/api/delete/${id}`,{
             method : "DELETE"
         })
         window.location.reload()
     }
+
+    const updateTodo = ()=>{
+        setEditContent({id , taskName})
+        setShowEdit(true)
+    }
+
     return (
         <>
             <div className="my-[10px] border-2 px-5 py-3 rounded-[7px] font-bold w-[400px] m-auto flex justify-between items-center">
                 <h1>{taskName}</h1>
                 <div className="flex text-[25px] gap-x-5">
-                    <button  className='cursor-pointer'><AiFillEdit /></button>
+                    <button  onClick={updateTodo} className='cursor-pointer'><AiFillEdit /></button>
                     <button  onClick={()=> handleDlt(id)} className='cursor-pointer'><MdDelete /></button>
                 </div>
             </div>
+            
+                
         </>
     )
 }
