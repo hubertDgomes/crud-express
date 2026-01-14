@@ -46,9 +46,9 @@ function App() {
             <button onClick={handleSend} className='ml-5 p-3 border-2 bg-amber-500 text-black font-bold cursor-pointer'>Add</button>
           </form>
         </div>
-        {datas.map((item) => (
+        {datas.map((item , index) => (
           <>
-            <ToDo key={item._id} id={item._id} taskName={item.toDo} setUpdateUI={setUpdateUI} setShowEdit={setShowEdit} setEditContent={setEditContent} />
+            <ToDo no={index+1} key={item._id} id={item._id} taskName={item.toDo} setUpdateUI={setUpdateUI} setShowEdit={setShowEdit} setEditContent={setEditContent} />
           </>
         ))}
         { showEdit && <PopUp setShowEdit={setShowEdit} editContent={editContent} />}
