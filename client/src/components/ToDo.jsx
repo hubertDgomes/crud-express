@@ -9,7 +9,7 @@ const ToDo = ({id, taskName , setUpdateUI , setShowEdit , setEditContent ,no}) =
     
 
     const handleDlt = async (id)=>{
-        await fetch(`http://localhost:3000/api/delete/${id}`,{
+        await fetch(`https://crudbackend-poer.onrender.com/api/delete/${id}`,{
             method : "DELETE"
         })
          window.location.reload()

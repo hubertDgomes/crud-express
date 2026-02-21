@@ -11,7 +11,7 @@ const PopUp = ({ setShowEdit , editContent}) => {
     }
 
     const handleUpdate = async ()=>{
-        await fetch(`http://localhost:3000/api/update/${editContent.id}`,{
+        await fetch(`https://crudbackend-poer.onrender.com/api/update/${editContent.id}`,{
             method: "PUT",
             headers: {"Content-Type" : "application/json"},
             body : JSON.stringify({toDo : data})

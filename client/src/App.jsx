@@ -14,7 +14,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/get")
+    fetch("https://crudbackend-poer.onrender.com/api/get")
       .then(res => res.json())
       .then(data => setDatas(data))
   }, [updateUI])
@@ -25,7 +25,7 @@ function App() {
       alert("Please write your task!")
     }
     else {
-      fetch("http://localhost:3000/api/save", {
+      fetch("https://crudbackend-poer.onrender.com/api/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ toDo: todo })
